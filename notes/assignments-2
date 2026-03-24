@@ -1,0 +1,48 @@
+1.What is `NPM`? 
+ A:- NPM is manages package for javascript but not stand as node package manager.
+
+2.What is `Parcel/Webpack`? Why do we need it?
+ A:- Parcel/Webpack are static module bundlers and they takes raw modular code (js,css and images) and transformed it into optimized which browser can understand and load efficiently.
+ We need it because only framework or library can't increase the website performance so it's needed because of performance,tree shaking,code splitting,Dev Build,HMR,Image optimization,Bundling,Compress,Diagnostic
+
+3.What is `.parcel-cache`?
+ A:- It's a dedicated directory where the parcel bundler stores information about a project's build process to speed up subsequent development and production builds
+
+4. What is `npx`?
+ A:- It's used to execute Node.js packages directly without installing them globally.
+
+5.What is difference between `dependencies` vs `devDependencies`
+ A:- dependencies are required for application to run in production (Installed by default with npm install <package-name> or without flags in the project root.)
+     devDependencies are only needed during the developemnt,testing and building phases. (Installed with npm install <package-name> --save-dev or -D flag.)
+
+6.What is Tree Shaking?
+ A:- Tree shaking is an optimization technique in the js context for dead code elimination.
+
+7.What is Hot Module Replacement?
+ A:- Hot Module Replacement updates only the changed module without refreshing the page.
+
+8.List down your favourite 5 superpowers of Parcel and describe any 3 of them in your own words.
+ A:- Tree shaking,HMR,Caching,Diagnostic,Minification
+  =>Diagnostic(it'll show the error in code or configuration,where the error occured along with hints about how to fix the issue)
+
+9.What is `.gitignore`? What should we add and not add into it?
+ A:- It's a special file used by git to ignore certain files or folders.
+ We should add some files which is too large,automatically generated,contain secrets,build/, dist/,node_modules/,.env,.DS_Store,*.log
+ We Shouldn't add source code,package.json(because it contains project dependencies),package-lock.json(these files lock dependency versions),Project configuration files,Database migrations,Public assets needed by the app,Documentation,Environment example files.
+
+10.What is the difference between `package.json` and `package-lock.json`?
+ A:- package.json defines project dependencies,editable,flexible versions
+     package-lock.json locks exact versions,auto-generated,ensures consistent installs
+
+11.Why should I not modify `package-lock.json`?
+ A:- Because it's auto-generated when we run the npm install package name and it'll be the exact versions what we're going to use
+
+12.What is `node_modules` ? Is it a good idea to push that on git?
+ A:- Node modules is a folder where npm installs the actual packages. and it contains actual source code of libraries.
+     No it's not good idea to push the node_modules on git because it's very large and it contains packages depend on other packages and we can install it using *npm install*.
+
+13. What is the `dist`(distribution) folder?
+ A:-It is the folder that contains the final optimised version of ur app that will be deployed to the server.
+
+14.What is `browserlists`?
+ A:-It is a tool that allows specifying which browsers should be supported in your frontend app by specifying "queries" in a config file.

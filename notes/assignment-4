@@ -1,0 +1,88 @@
+1. Is JSX mandatory for React?
+ A:-No,JSX isn't mandatory in React.React can be written without JSX by using React.createElement().
+ Example without JSX:
+    const element = React.createElement("h1",null,"Hello world");
+ Same with JSX:
+    const element = <h1>Hello</h1>;(easier to read,easier to write,looks like html,better for building UI components).
+
+2.Is ES6 mandatory for React?
+ A:-No but ES6 is basically mandatory because modern React code uses ES6 features all the time.
+    ES6 features commonly used in React:
+        1.let and const
+        2.arrow functions
+        3.destructuring
+        4.template literals
+        5.spread operator
+        6.import/export
+        7.classes
+        8.promises
+        9.symbols
+        10.Object literals
+        11.default parameters
+
+3.{TitleComponent} vs {<TitleComponent/>} vs {<TitleComponent></TitleComponent>} in JSX .
+ A:-Function TitleComponent(){
+    return <h1>Hello</h1>
+ }
+  <div>{TitleComponent}</div> - referring to the function itself, not calling/rendering it. 
+    const obj = {
+        header: TitleComponent
+    };
+  <div>{<TitleComponent />}</div> - calling/rendering the function.
+  <div>{<TitleComponent></TitleComponent>}</div> - calling/rendering the function.
+
+4.How can I write comments in JSX?
+ A:-In JSX, you can write comments using curly braces and JavaScript comment syntax. 
+    For example:
+    <div>
+        {/* This is a comment in JSX */}
+        <h1>Hello World</h1>
+    </div>
+
+5.What is <React.Fragment></React.Fragment> and <></> ?
+ A:- These are used when you want to return multiple elements without adding an extra div to the DOM.
+    <> </> cannot take props or key directly.
+    <React.Fragment></React.Fragment> can take props and key.
+    Example:
+    function App() {
+            return (
+                <React.Fragment key={uniqueKey}>
+                <h1>Hello</h1>
+                <p>Welcome</p>
+                </React.Fragment>
+            );
+    }
+
+6.What is Virtual DOM?
+ A:-Virtual DOM is a lightweight JavaScript copy of the real DOM.React uses it to update the UI efficiently without directly manipulating the browser DOM every time.
+
+7.What is Reconciliation in React?
+ A:- React compares the new Virtual DOM with the previous one and updates only the changed parts in the real DOM. This process is called Reconciliation.
+
+8.What is React Fiber?
+ A:-React fiber is the new reconciliation algorithm in React 16. It allows React to break down rendering work into smaller chunks and prioritize updates based on their importance, improving performance and responsiveness.
+
+ 9.Why we need keys in React? When do we need keys in React?
+  A:- Keys help React identify which items have changed, are added, or are removed. They should be given to the elements inside the array to provide a stable identity for each element.
+    We need keys when we are rendering a list of elements. For example:
+    const items = ['Apple', 'Banana', 'Cherry'];
+    return (
+        <ul>
+            {items.map((item, index) => (
+                <li key={index}>{item}</li>
+            ))}
+        </ul>
+    );
+
+10.Can we use index as keys in React?
+ A:- Using index as keys is not recommended in most cases, especially if the list can change over time (e.g., items added/removed). This can lead to issues with component state and performance. It's better to use a unique identifier for each item if available.
+
+11.What is props in React? Ways to
+ A:- Props (short for properties) are read-only data passed from a parent component to a child component. They allow you to customize and configure components. 
+    Ways to pass props:
+    1. Directly in JSX: <Component propName="value" />
+    2. Using an object: const props = { propName: "value" }; <Component {...props} />
+    3. As children: <Component>Child content</Component>
+
+12.What is a Config Driven UI ?
+ A:-Config Driven UI is a design pattern where the UI is generated based on a configuration object. This allows for more flexibility and reusability, as the same component can render different UIs based on the provided configuration. For example, you can have a restaurant card component that takes a restaurant object as a prop and renders the card based on that data.

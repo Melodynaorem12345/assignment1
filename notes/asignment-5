@@ -1,0 +1,75 @@
+1.What is the difference between Named Export, Default export and * as export?
+ A:- Name export :
+        Export thing by their names.
+        Example : // math.js
+                export const add = (a, b) => a + b;
+                export const subtract = (a, b) => a - b;
+        Import:
+        import { add, subtract } from "./math";
+        ->Rules:
+            1.Must use same names
+            2.Must use {}
+        ->When to use
+            1.When you have multiple exports
+            2.Utilities, helpers, constants
+
+    Default Export :
+        Export one main thing from a file.
+        Example://Header.js
+                const Header = () => {
+                return <h1>Header</h1>;
+                };
+                export default Header;
+        Import:
+        import Header from "./Header";
+        ->Rules:
+            1.No {} needed
+            2.You can rename it anything
+        ->when to use
+            1.When file has one main component
+            2.React components mostly use this
+
+    * as Export(Namespace Import) : 
+        Import everything and store inside an object (math)
+        Example :// math.js
+            export const add = (a, b) => a + b;
+            export const subtract = (a, b) => a - b;
+
+            import * as math from "./math";
+            So internally:
+            const math = {
+                        add,
+                        subtract
+                        };
+
+            math.add(2, 3);
+            math.subtract(5, 2);
+        ->When to use
+            1.When file has many exports
+            2.When you want clean grouping
+
+2.What is the importance of config.js file?
+ A:-Reusability across components 
+    1.Centralized control(change once,reflected everywhere),2.Avoid hardcoding (DRY), 3.Easy maintenance, 4.Better readability, 5.Reusability across components.
+
+3.What are React Hooks?
+ A:- React hooks are like js function but it's react utility function.
+
+4.Why do we need a useState Hook?
+ A:-Because normal variables do NOT update the UI.but usestate  updates the UI when data changes.
+
+
+User action
+   ↓
+Batching (collect updates)
+   ↓
+Fiber Scheduler (decides when)
+   ↓
+Render Phase (Reconciliation)
+   ↓
+Diffing Algorithm (find changes)
+   ↓
+Fiber breaks work into chunks
+   ↓
+Commit Phase (update DOM)
+

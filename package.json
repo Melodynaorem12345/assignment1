@@ -1,0 +1,34 @@
+{
+  "name": "episode-1",
+  "version": "1.0.0",
+  "scripts": {
+    "start": "parcel index.html",
+    "build": "parcel build index.html",
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Melodynaorem12345/assignment1.git"
+  },
+  "keywords": [
+    "react"
+  ],
+  "author": "Melody",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Melodynaorem12345/assignment1/issues"
+  },
+  "homepage": "https://github.com/Melodynaorem12345/assignment1#readme",
+  "description": "",
+  "devDependencies": {
+    "parcel": "^2.16.4"
+  },
+  "dependencies": {
+    "react": "^19.2.4",
+    "react-dom": "^19.2.4"
+  },
+  "browserlist":[
+    "last 2 versions"
+  ]
+
+}
