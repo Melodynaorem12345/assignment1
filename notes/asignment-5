@@ -58,6 +58,7 @@
 4.Why do we need a useState Hook?
  A:-Because normal variables do NOT update the UI.but usestate  updates the UI when data changes.
 
+(UI and data layer sync together to update the UI)
 
 User action
    ↓

@@ -110,16 +110,15 @@ header {
   font-size: 16px;
 }
 
-.search {
-  text-align: center;
-  margin: 20px;
+.filter-btn.custom {
+  border-radius: 0 4px 4px 0;
 }
 
 .search input {
   border: 1px solid #00000030;
-  border-radius: 4px;
+  border-radius: 4px 0 0 4px;
   padding: 8px;
-  font-size: 14px;
+  font-size: 16px;
 }
 
 .restaurant-image {
@@ -132,5 +131,22 @@ header {
   border-radius: 50%;
   width: 40px;
   height: 40px;
+}
+
+.login-btn {
+  color: #fff;
+  cursor: pointer;
+  background: #2196f3;
+  border: 1px solid #2196f3;
+  border-radius: 8px;
+  padding: 12px 20px;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.wrapper {
+  align-items: center;
+  gap: 16px;
+  display: flex;
 }
 /*# sourceMappingURL=episode-1.9e4c6fd2.css.map */

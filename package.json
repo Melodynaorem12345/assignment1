@@ -21,14 +21,15 @@
   "homepage": "https://github.com/Melodynaorem12345/assignment1#readme",
   "description": "",
   "devDependencies": {
+    "@types/react": "^19.2.14",
+    "@types/react-dom": "^19.2.3",
     "parcel": "^2.16.4"
   },
   "dependencies": {
     "react": "^19.2.4",
     "react-dom": "^19.2.4"
   },
-  "browserlist":[
+  "browserlist": [
     "last 2 versions"
   ]
-
 }

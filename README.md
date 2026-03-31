@@ -125,4 +125,4 @@
 # React Hooks
     (Normal JS utility functions)
     - useState() - state variable in react
-    - useEffect()
+    - useEffect() - sideEfect ->useEffect(()=>{},[])
