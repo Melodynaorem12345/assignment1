@@ -1,13 +1,13 @@
-import { RESTAURANT_IMAGE } from "../utils/constants";
+import { CDN_URL } from "../utils/constants";
 const RestaurantCard = (props) => {
   const { resData } = props;
-  const { name, cuisines, avgRating, sla, costForTwo } = resData?.info;
+  const { name, cuisines, avgRating, sla, costForTwo, cloudinaryImageId } = resData?.info;
 
   return (
     <div className="restaurant-card" style={{ backgroundColor: "#f1f1f1" }}>
       <img
         className="restaurant-image"
-        src={RESTAURANT_IMAGE}
+        src={CDN_URL + cloudinaryImageId}
         alt="restaurant-image"
       />
       <h3>{name}</h3>
