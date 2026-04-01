@@ -1,6 +1,6 @@
 import RestaurantCard from "./RestaurantCard";
 import { API_URL } from "../utils/constants";
-import resList from "../utils/mockData";
+// import resList from "../utils/mockData";
 import Shimmer from "./Shimmer";
 import { useState,useEffect } from "react";
 const Body = () => {
@@ -9,7 +9,7 @@ const Body = () => {
 
     const [searchText, setSearchText] = useState("");
 
-    console.log("Body Rendered");
+    //console.log("Body Rendered");
     useEffect(() => {
         fetchData();
     }, []);
@@ -17,10 +17,10 @@ const Body = () => {
     const fetchData = async () => {
         const data = await fetch(API_URL);
         const json = await data.json();
-        console.log(json)
+        //console.log(json)
         //optional chaining
-        setrestaurantList(json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
-        setFilteredList(json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
+        setrestaurantList(json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
+        setFilteredList(json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
     }
 
     //conditional rendering

@@ -126,3 +126,7 @@
     (Normal JS utility functions)
     - useState() - state variable in react
     - useEffect() - sideEfect ->useEffect(()=>{},[])
+
+# 2 types of Routing in web apps
+- client Side Routing()
+- Server Side Routing(example how we fetch the about.html)
