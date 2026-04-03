@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 const Header = () => {
   const[islogin,setIsLogin] = useState("login");
   console.log("Header Render");
+  console.log("UseState called:",useState())
 
   //if no dependency array => useEffect is called on every render
   //if the depencency array is empty = [] => useEffect is called only on initial render just once.

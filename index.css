@@ -134,3 +134,8 @@ header {
   align-items: center;
   gap: 16px;
 }
+.user-card{
+  padding: 16px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+}

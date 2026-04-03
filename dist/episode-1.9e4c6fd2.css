@@ -155,4 +155,10 @@ header {
   gap: 16px;
   display: flex;
 }
+
+.user-card {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 16px;
+}
 /*# sourceMappingURL=episode-1.9e4c6fd2.css.map */
