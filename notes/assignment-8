@@ -1,0 +1,143 @@
+https://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/ --- lifecycle diagram
+
+1. How do you create Nested Routes react-router-dom cofiguration ?
+    A:- In rect application using react-router-dom,can create a nested route by nesting our <Route> component inside each other within the route configuration.This allows you to define routes and components hierarchically, making it easier to manage the routing structure of your application.
+        1.npm install react-router-dom
+        2.import {BrowserRouter as Router,Route,Switch} from "react-router-dom"
+
+2. Read abt createHashRouter, createMemoryRouter from React Router docs.
+    A:- createHashRouter : is part of the React Router library and provides routing capabilities for single-page applications (SPAs).It uses the fragment identifier (hash) in the URL to manage
+    and handle routes on the client side. This means that changes in the URL after the
+    # symbol do not trigger a full page reload, making it suitable for SPAs.
+
+    createMemoryRouter : createMemoryRouter is another routing component
+    provided by React Router. Unlike createHashRouter or BrowserRouter,
+    createMemoryRouter is not associated with the browser's URL. Instead, it
+    allows you to create an in-memory router for testing or other scenarios where
+    you don't want to interact with the actual browser's URL.
+
+3. What is the order of life cycle method calls in Class Based Components ?
+    A:- Constructor :  constructor method is the first to be called when a component is created. It's where we typically initialize the component's state and bind event handlers.
+
+        Render : render method is responsible for rendering the component's UI. It must return a React element (typically JSX) representing the component's structure. 
+
+        ComponentDidMount : This method is called immediately after the component is inserted into the DOM. It's often used for making AJAX requests, setting up subscriptions, or other one-time initializations. 
+
+        ComponentDidUpdate : This method is called after the component has been updated (re-rendered) due to changes in state or props. It's often used for side effects, like updating the DOM in response to state or prop changes.
+
+        ComponentWillUnmount : This method is called just before the component is removed from the DOM. It's used to clean up resources or perform any necessary cleanup.
+
+4. Why do we use componentDidMount?
+    A:- The  componentDidMount  lifecycle method in React class-based components is used
+        for a specific purpose: it is called immediately after a component is inserted into
+        the DOM (Document Object Model). This makes it a crucial point in the
+        component's lifecycle and provides a valuable opportunity to perform various
+        tasks that require interaction with the DOM or external data sources.
+        Like Fetching data,DOM Manipulation
+
+        class MyComponent extends React.Component {
+        componentDidMount() {
+        // Fetch data from an API
+        fetch('https://api.example.com/data')
+        .then(response => response.json())
+        .then(data => {
+        // Update the component's state with the fetched data
+        this.setState({ data });
+        })
+        .catch(error => {
+        // Handle any errors
+        console.error(error);
+        });
+        }
+        render() {
+        // Render component based on state
+        return (
+        <div>{/* Display data from this.state.data */}</div>
+        );
+        }
+        }
+
+5. Why do we use componentWillUnmount? Show with example ?
+    A:- The  componentWillUnmount  lifecycle method in React class-based
+        components is used to perform cleanup and teardown tasks
+        just before a component is removed from the DOM. It's a
+        crucial part of managing resources and subscriptions to
+        prevent memory leaks and ensure that the component's
+        behavior is properly cleaned up.
+        Like Cleanup Resources,Cancel Pending Requests
+        EXample:
+        class MyComponent extends React.Component {
+                constructor() {
+                super();
+                this.handleResize = this.handleResize.bind(this);
+            }
+            componentDidMount() {
+                // Add a window resize event listener when the component
+                is mounted
+                window.addEventListener('resize', this.handleResize);
+            }
+            componentWillUnmount() {
+                // Remove the window resize event listener when the compo
+                nent is unmounted
+                window.removeEventListener('resize', this.handleResize);
+            }
+            handleResize(event) {
+                // Handle the resize event
+                console.log('Window resized:', event);
+            }
+            render() {
+                return <div>My Component</div>;
+            }
+        }
+
+6. (Research) Why do we use super(props) in constructor?
+    A:- In JavaScript, when you define a class that extends another
+        class (inherits from a parent class), we often use the super()
+        method with props as an argument in the constructor of the
+        child class. This is commonly seen in React when you create
+        class-based components.
+        1.Access to Parent Class's Constructor
+        2.Passing Props to the Parent Constructor
+        Example:
+        class MyComponent extends React.Component {
+        constructor(props) {
+        super(props); // Call the constructor of the parent class
+        (React.Component)
+        // Initialize your component's state or perform other set
+        up
+        }
+        render() {
+        // Render the component based on its state and props
+        return <div>{this.props.someProp}</div>;
+        }
+        }
+
+7. (Research) Why can't we have the callback function of useEffect async?
+    A:- In React, the  useEffect  hook is designed to handle side effects in functional
+        components. It's a powerful and flexible tool for managing asynchronous
+        operations, such as data fetching, API calls, and more. However, useEffect itself
+        cannot directly accept an async callback function. This is because useEffect
+        expects its callback function to return either nothing (i.e., undefined) or a cleanup function, and it doesn't work well with Promises returned from async functions.
+        Reason:
+        1.Return Value Expectation
+        2.Execution Order and Timing
+
+        useEffect(() => {
+            const fetchData = async () => {
+                try {
+                    // Perform asynchronous operations
+                    const result = await someAsyncOperation();
+                    // Update the state with the result
+                    setState(result);
+                } catch (error) {
+                    // Handle errors
+                    console.error(error);
+                }
+            };
+            fetchData(); // Call the async function
+            return () => {
+                // Cleanup code, if necessary
+                // This function will be called when the component unmoun
+                ts or when dependencies change
+            };
+        }, [/* dependency array */]);
