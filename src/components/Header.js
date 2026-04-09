@@ -16,17 +16,17 @@ const Header = () => {
     console.log("useEffect called");
   }, [islogin]);
   return (
-    <div className="header">
-      <header>
+    <div className="header h-35 w-auto">
+      <header className="flex items-center justify-between p-4 bg-blue-50 shadow">
         <div className="logo">
           <img
-            className="logo-img"
+            className="logo-img w-25"
             src={LOGO_URL}
             alt="logo"
           />
         </div>
         <div className="nav-items">
-          <ul>
+          <ul className="flex items-center justify-between gap-7">
             <li>Online Status {onlineStatus ? "✅" : "🔴"}</li>
             <li><Link to="/">Home</Link></li>
             <li><Link to="/about">About us</Link></li>
@@ -36,7 +36,7 @@ const Header = () => {
           </ul>
         </div>
         <div className="user-profile">
-          <button className="login-btn" onClick={() => {setIsLogin(islogin === "login" ? "logout" : "login");}}>{islogin}</button>
+          <button className="login-btn bg-emerald-800 color- px-4 py-2 rounded font-medium text-white text-sm" onClick={() => {setIsLogin(islogin === "login" ? "logout" : "login");}}>{islogin}</button>
         </div>
         
         {/* <div className="user-profile">
