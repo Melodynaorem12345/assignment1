@@ -1,0 +1,98 @@
+1. When and why do we need lazy()?
+    A:- lazy() function is a feature in react that allows us to loads component dynamically or lazily only when they are needed.This can
+        be beneficial for improving the performance and load times of our web application, especially if it contains a large number of
+        components or if some components are rarely used. 
+        1.Code splitting and reducing initial bundle size
+        2.Improve performance
+        3.Faster Initial load
+        4.Better User Experience
+        5.Reducing Browser Caching Overhead
+        6.Optimizing Mobile Performance
+        Example:
+        import React, { lazy, Suspense } from 'react';
+        const LazyComponent = lazy(() => import('./LazyComponent'));
+        function App() {
+            return (
+            <div>
+                <Suspense fallback={<div>Loading...</div>}>//Suspense  component allows us to specify a loading indicator while the component   is being loaded
+                    <LazyComponent />
+                </Suspense>
+            </div>
+            );
+        }
+        export default App;
+
+2. What is suspense ?
+    A:- Suspense  is a feature that allows us to declaratively manage asynchronous data fetching and code-splitting in our applications.It is primarily used in combination with the lazy() function for dynamic imports and with the React.lazy() component to improve the user experience when loading data or components asynchronously.
+    Main aspects and use cases of Suspense:
+    1.Data Fetching
+    2.Code Splitting
+    3.Error Handling
+    Example :
+    import React, { Suspense } from 'react';
+    const fetchData = () => {
+        return new Promise((resolve) => {
+            setTimeout(() => {
+            resolve("Data fetched!");
+            }, 2000);
+        });
+    };
+    function DataFetchingComponent() {
+        const data = fetchData();
+        return (
+        <div>
+            <Suspense fallback={<div>Loading data...</div>}>
+                <AsyncDataComponent data={data} />
+            </Suspense>
+        </div>
+        );
+    }
+    function AsyncDataComponent({ data }) {
+        return <div>{data}</div>;
+    }
+
+3. Why we got this error : A component suspended while responding to synchronous input. This will cause the UI to be replaced with a loading indicator. To fix, updates that suspend should be wrapped with startTransition? How does suspense fix this error?
+    A:-1.Identify the Issue - You should identify which part of your code is causing the synchronous component to suspend. This could be due to a network request, a dynamic import of a component, or another asynchronous operation.
+        2.Wrap Asynchronous Code -  Ensure that the asynchronous code, which might suspend, is wrapped within a Suspense boundary (using ) and that you provide a fallback UI to display while waiting for the operation to complete. 
+        Example :
+        import React, { lazy, Suspense } from 'react';
+        const LazyComponent = lazy(() => import('./LazyComponent'));
+        function App() {
+            return (
+            <div>
+                <Suspense fallback={<div>Loading...</div>}>//Suspense  component allows us to specify a loading indicator while the component   is being loaded
+                    <LazyComponent />
+                </Suspense>
+            </div>
+            );
+        }
+        export default App;
+
+4. Advantages and disadvantages of using this code splitting pattern?
+    A:- Code splitting is a technique used to break down a large monolithic JavaScript bundle into smaller, more manageable pieces, which can be loaded on-demand. 
+    Advantages :
+        1.Faster Initial Load Time
+        2.Improved Performance
+        3.Optimized Resource Usage
+        4.Enhanced Caching
+        5.Simpler Maintenanc
+        6.Better Mobile Performance
+    Disadvantages :
+        1.Complex Configuration
+        2.Initial Loading Delay
+        3.Asynchronous Loading
+        4.Route-Based Splitting
+        5.Tool and Framework Support
+        6.Testing Complexity
+
+5. When do we and why do we need suspense?
+    A:-React Suspense is a feature introduced in React to help manage asynchronous operations, such as data fetching and code splitting, in a more declarative and user-friendly manner.
+    Need to use Suspense in react when want to :
+    1.Improve User Experienc
+    2.Optimize Performance
+    3.Simplified Code
+    4.Avoid Callback Hell
+    5.Error Handling
+    when and why you might need Suspense in different scenarios:
+    1.Data Fetching
+    2.Code Splitting

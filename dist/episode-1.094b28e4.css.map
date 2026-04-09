@@ -1,1 +1,0 @@
-{"mappings":"ACAA","sources":["episode-1.094b28e4.css","index.css"],"sourcesContent":["#heading {\n  color: red;\n  text-align: center;\n}\n/*# sourceMappingURL=episode-1.094b28e4.css.map */\n","#heading{\n    color: red;\n    text-align: center;\n}"],"names":[],"version":3,"file":"episode-1.094b28e4.css.map"}

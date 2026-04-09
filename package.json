@@ -21,16 +21,20 @@
   "homepage": "https://github.com/Melodynaorem12345/assignment1#readme",
   "description": "",
   "devDependencies": {
+    "@tailwindcss/postcss": "^4.2.2",
     "@types/react": "^19.2.14",
     "@types/react-dom": "^19.2.3",
-    "parcel": "^2.16.4"
+    "autoprefixer": "^10.4.27",
+    "parcel": "^2.16.4",
+    "postcss": "^8.5.9",
+    "tailwindcss": "^4.2.2"
   },
   "dependencies": {
     "react": "^19.2.4",
     "react-dom": "^19.2.4",
     "react-router-dom": "^6.30.3"
   },
-  "browserlist": [
+  "browserslist": [
     "last 2 versions"
   ]
 }
