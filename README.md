@@ -130,3 +130,11 @@
 # 2 types of Routing in web apps
 - client Side Routing()
 - Server Side Routing(example how we fetch the about.html)
+
+# Redux toolkit
+- Install @reduxjs/toolkit and react-redux
+- Build our store
+- connect our store to our app
+- slice (cart slice)
+- dispatch(action)
+- Selector

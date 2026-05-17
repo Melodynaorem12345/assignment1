@@ -2,18 +2,22 @@ import { LOGO_URL } from "../utils/constants";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus"; 
+import { useContext } from "react";
+import UserContext from "../utils/UserContext";
 
 const Header = () => {
   const[islogin,setIsLogin] = useState("login");
   const onlineStatus = useOnlineStatus();
-  console.log("Header Render");
-  console.log("UseState called:",useState())
+  const {loggedInUser} = useContext(UserContext);
+  //console.log("UserContext data:", data);
+  // console.log("Header Render");
+  // console.log("UseState called:",useState())
 
   //if no dependency array => useEffect is called on every render
   //if the depencency array is empty = [] => useEffect is called only on initial render just once.
   //if the dependency array has some state variable like this [islogin] => called everytime islogin is updated
   useEffect(()=>{
-    console.log("useEffect called");
+    //console.log("useEffect called");
   }, [islogin]);
   return (
     <div className="header h-35 w-auto">
@@ -33,6 +37,7 @@ const Header = () => {
             <li><Link to="/contact">Contact Us</Link></li>
             <li><Link to="/grocery">Grocery</Link></li>
             <li><Link to="/cart">Cart</Link></li>
+            <li className="font-bold">{loggedInUser}</li>
           </ul>
         </div>
         <div className="user-profile">

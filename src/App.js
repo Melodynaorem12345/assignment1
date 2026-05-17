@@ -1,4 +1,5 @@
 import React, { Suspense,lazy } from "react";
+import { useState,useEffect } from "react";
 import ReactDOM from "react-dom/client";
 import Header from "./components/Header";
 import Body from "./components/Body";
@@ -8,6 +9,7 @@ import RestaurantMenu from "./components/RestaurantMenu";
 import Error from "./components/Error";
 //import Grocery from "./components/Grocery";
 import {createBrowserRouter,RouterProvider,Outlet} from "react-router-dom";
+import UserContext from "./utils/UserContext";
 
 //chunking
 //code splitting
@@ -16,13 +18,27 @@ import {createBrowserRouter,RouterProvider,Outlet} from "react-router-dom";
 //on demand loading
 //dynamic import
 
+
 const Grocery = lazy(() => import("./components/Grocery"));
 
+
+
 const AppLayout = () => {
+  const[userName, setUserName] = useState();
+useEffect(()=>{
+  //API call to get the data of the currently logged in user
+  const data ={
+    name: "Melody Naorem"
+  }
+  setUserName(data.name);
+},[])
   return (
+
     <div className="app flex flex-col h-screen gap-10">
+      <UserContext.Provider value={{loggedInUser: userName,setUserName}}>
       <Header />
       <Outlet />
+      </UserContext.Provider>
     </div>
   );
 };

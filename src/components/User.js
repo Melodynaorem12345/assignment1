@@ -5,11 +5,11 @@ const User = ({name}) =>{
 
     useEffect(()=>{
         const timer = setInterval(()=>{
-            console.log("Namaste React OP");
+            //console.log("Namaste React OP");
         },1000);
         return () =>{
             clearInterval(timer);
-            console.log("UseEffect Return");
+            //console.log("UseEffect Return");
         }
     },[])
 

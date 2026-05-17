@@ -22,9 +22,9 @@ class UserClass extends React.Component {
 // }
   async componentDidMount() {
     setInterval(()=>{
-        console.log("Render Interval")
+        //console.log("Render Interval")
     },1000)
-   console.log(this.props.name + "Child ComponentDidMount");
+   //console.log(this.props.name + "Child ComponentDidMount");
 
     //API call
     const data = await fetch("https://api.github.com/users/melody");
@@ -39,12 +39,12 @@ class UserClass extends React.Component {
     // if(this.state.count !== prevSate.count){
 
     // }
-    console.log("Component Did Update")
+    //console.log("Component Did Update")
   }
 
   componentWillUnmount(){
     clearInterval(this.time);
-    console.log("Component Will Unmount");
+    //console.log("Component Will Unmount");
   }
 
   render() {
@@ -52,7 +52,7 @@ class UserClass extends React.Component {
     //debugger;
     //const { name, location } = this.props;
    // const { count } = this.state;
-    console.log(name + "Child Render");
+    //console.log(name + "Child Render");
 
     return (
       <div className="user-card">
