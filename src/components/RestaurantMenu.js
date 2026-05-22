@@ -2,6 +2,8 @@ import Shimmer from "./Shimmer";
 import { useParams } from "react-router-dom";
 import useRestaurantMenu from "../utils/useRestaurantMenu";
 import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { addItem } from "../utils/cartSlice";
 
 const ItemCard = ({ item }) => {
   const { id, isVeg, emoji, name, price, defaultPrice, description, ratings } =
@@ -9,6 +11,13 @@ const ItemCard = ({ item }) => {
 
   const displayPrice = ((price || defaultPrice) / 100).toFixed(0);
   const rating = ratings?.aggregatedRating?.rating;
+
+  const dispatch = useDispatch();
+
+  const handleAddItem = (item) =>{
+    //dispatch an action to add item to cart
+    dispatch(addItem(item));
+  }
 
   return (
     <div className="flex justify-between items-start py-6 border-b border-gray-200 gap-4">
@@ -35,8 +44,9 @@ const ItemCard = ({ item }) => {
           {emoji || "🍽️"}
         </div>
         {/* ADD button overlapping bottom — exactly like Swiggy */}
-        <button className="absolute -bottom-3 left-1/2 -translate-x-1/2 bg-white text-green-600 font-bold text-sm px-6 py-1.5 rounded-lg shadow-md border border-gray-200 hover:bg-green-50 transition-all w-24 tracking-widest">
-          ADD
+        <button className="absolute -bottom-3 left-1/2 -translate-x-1/2 bg-white text-green-600 font-bold text-sm px-3 py-1.5 rounded-lg shadow-md border border-gray-200 hover:bg-green-50 transition-all w-24 tracking-widest"
+        onClick={() => handleAddItem(item)}>
+          ADD +
         </button>
       </div>
     </div>

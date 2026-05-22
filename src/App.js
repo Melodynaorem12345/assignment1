@@ -10,6 +10,9 @@ import Error from "./components/Error";
 //import Grocery from "./components/Grocery";
 import {createBrowserRouter,RouterProvider,Outlet} from "react-router-dom";
 import UserContext from "./utils/UserContext";
+import {Provider} from "react-redux";
+import appStore from "./utils/appStore";
+import Cart from "./components/Cart";
 
 //chunking
 //code splitting
@@ -33,13 +36,14 @@ useEffect(()=>{
   setUserName(data.name);
 },[])
   return (
-
-    <div className="app flex flex-col h-screen gap-10">
+    <Provider store={appStore}>
+      <div className="app flex flex-col h-screen gap-10">
       <UserContext.Provider value={{loggedInUser: userName,setUserName}}>
       <Header />
       <Outlet />
       </UserContext.Provider>
     </div>
+    </Provider>
   );
 };
 
@@ -64,6 +68,9 @@ const appRouter = createBrowserRouter([
       },{
         path: "/restaurants/:resId",
         element: <RestaurantMenu />
+      },{
+        path: "/cart",
+        element: <Cart />
       }
     ],
     errorElement: <Error />

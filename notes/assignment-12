@@ -1,0 +1,80 @@
+1. useContext vs Redux.
+    A:- useContext and Redux are both used for state management in react applications.
+    useContext :
+    ----------
+    1.Scope :  is part of the React core and is used for managing state within the component tree. It provides a way to access the value of a context directly within a component and its descendants. and smaller-scale state management needs within a component or a small section of the application.
+    2.Complexity : simpler and more lightweight,part of the react library and doesn't introduce additional concepts or biolerplate code.
+    3.Component Coupling : state managed with useContext is local to the component so thi can lead to ore isolated and less globally sheare state.
+    4.Integration : seamlessly integrated into react and works well with component lifecycle. can create and consume contexts iwthing the functional component using the useContext hook
+
+    Redux :
+    -----
+    1.Scope : is a state management library that provides a global state container for the entire application and it allows to manage the application state in a predictable and centralized manner.
+    2.Complexity : Redux introduces a set of concepts, such as actions,reducers and a store.Complex compared to using useContext for local state management.But it become valuable in large and more complex applications.
+    3.Component Coupling : state managed with Redux is global,menas any component can connect to and access the state.Can be advantages for sharing state across different parts of the application.
+    4.Integration : Redux needs to be integrated separately into a React application.Need to create actions, reducers, and a store.Components interact with the global state using the connect function or hooks like useSelector and useDispatch.
+
+2. Advantage of using Redux Toolkit over Redux.
+    A:-Redux Toolkit  is a set of utility functions and abstractions that simplifies and streamlines the process of working with Redux.
+    Some advantages of using Redux Toolkit over plain Redux:
+    1.Less Boilerplate Code 
+    2.Easier Async Operations
+    3.Simpler Store Setup 
+    4.Built-in DevTools Support 
+    5.Encourages Best Practices
+    6.Handles Immutability for You
+    7.Backward Compatibility
+    8.Faster Development
+
+3. Explain Dispatcher.
+    A:-In Redux, a  dispatcher  is not a standalone concept; instead, it's a term often used to refer to a function called dispatch and use it to send actions to the store.An action is a plain JavaScript object that describes what should change in the application's state.
+    Example :
+    import { useDispatch } from 'react-redux';
+    const MyComponent = () =>{
+        const dispatch = useDispatch();
+        const handleButtonClick = () =>{
+            dispatch({type: "INCREMENT"});
+        }
+        return (
+            <button onClick={handleButtonClick}>
+            Increment Count
+            </button>
+        );
+    }
+
+4. Explain Reducer ?
+    A:- In Redux Toolkit, the  createSlice function is commonly used to create reducers . It simplifies the process of defining actions and the corresponding reducer logic, reducing boilerplate code.
+    Example :
+    import { createSlice } from '@reduxjs/toolkit';
+    const counterSlice = createSlice({
+        name: 'counter',
+        initialState: { value: 0 },
+        reducers: {
+                increment: (state) => {
+                state.value += 1;// Immer takes care of creating a new state
+                },
+                decrement: (state) => {
+                state.value -= 1;
+                },
+        },
+    });
+    // Extracting actions and reducer from the slice
+    export const { increment, decrement } = counterSlice.actions;
+    export default counterSlice.reducer;
+
+    const rootReducer = combineReducers({
+    counter: counterSlice.reducer,
+    // ... other reducers
+    });
+
+5. Explain Slice ?
+    A:- In Redux Toolkit, a  slice  is a collection of Redux-related code,including reducer logic and actions, that corresponds to a specific piece of the application state. Slices are created using the createSlice utility function provided by Redux Toolkit. The primary purpose of slices is to encapsulate the logic related to a specific part of the state, making the code more modular and easier to manage.
+    ***Using a Slice: Once we've created a slice, you can use its reducer and actions in your Redux store configuration and in your React components.
+
+6. Explain Selector ?
+    A:- In Redux Toolkit, a  selector  is a function that extracts specific pieces of data from the Redux store. It allows you to compute derived data from the store state and efficiently access specific parts of the state tree. Selectors play a crucial role in managing the state in a clean and efficient way.
+
+7. Explain createSlice and the configuration it takes.
+    A:- createSlice  is a utility function provided by Redux Toolkit that simplifies the  process of creating Redux slices . A  Redux slice is a piece of the Redux store that includes a set of actions, a reducer, and an initial state . The createSlice function helps reduce boilerplate code associated with defining actions and the reducer for a specific slice of your Redux store.
+
+

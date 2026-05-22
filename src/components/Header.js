@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus"; 
 import { useContext } from "react";
 import UserContext from "../utils/UserContext";
+import { useSelector } from "react-redux";
 
 const Header = () => {
   const[islogin,setIsLogin] = useState("login");
@@ -19,15 +20,22 @@ const Header = () => {
   useEffect(()=>{
     //console.log("useEffect called");
   }, [islogin]);
+
+  //Subscribing to the store using a Selector
+  const cartItems = useSelector((store) => store.cart.items);
+
+
   return (
     <div className="header h-35 w-auto">
       <header className="flex items-center justify-between p-4 bg-blue-50 shadow">
         <div className="logo">
-          <img
-            className="logo-img w-25"
-            src={LOGO_URL}
-            alt="logo"
-          />
+          <Link to="/">
+            <img
+              className="logo-img w-25"
+              src={LOGO_URL}
+              alt="logo"
+            />
+          </Link>
         </div>
         <div className="nav-items">
           <ul className="flex items-center justify-between gap-7">
@@ -36,7 +44,7 @@ const Header = () => {
             <li><Link to="/about">About us</Link></li>
             <li><Link to="/contact">Contact Us</Link></li>
             <li><Link to="/grocery">Grocery</Link></li>
-            <li><Link to="/cart">Cart</Link></li>
+            <li className="px-4 font-bold text-xl"><Link to="/cart">Cart - ({cartItems.length} items)</Link></li>
             <li className="font-bold">{loggedInUser}</li>
           </ul>
         </div>
